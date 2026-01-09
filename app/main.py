@@ -27,6 +27,11 @@ def health():
 def triage(payload: UserInput):
     if not payload.message.strip():
         raise HTTPException(status_code=400, detail="message is empty")
-    graph = get_graph()
-    out = graph.invoke({"user_message": payload.message})
-    return out["result_json"]
+
+    try:
+        graph = get_graph()
+        out = graph.invoke({"user_message": payload.message})
+        return out["result_json"]
+    except Exception:
+        # In CI/test we may not have external credentials; return a controlled 500.
+        raise HTTPException(status_code=500, detail="Triage failed")

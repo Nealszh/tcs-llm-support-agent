@@ -30,4 +30,3 @@ def triage(payload: UserInput):
     graph = get_graph()
     out = graph.invoke({"user_message": payload.message})
     return out["result_json"]
-

@@ -55,6 +55,7 @@ This project can be run locally for development or evaluation purposes.
 
 ```bash
 pip install -r requirements.txt
+```
 
 ### 2. Configure environment variables
 

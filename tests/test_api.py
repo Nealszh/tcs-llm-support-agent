@@ -8,6 +8,6 @@ def test_health():
     assert r.status_code == 200
 
 def test_triage_contract_only():
-    # This test validates API contract only, not LLM behavior
+    # Contract-level test: CI should not depend on external LLM credentials
     r = client.post("/triage", json={"message": "Test message"})
     assert r.status_code in (200, 500)

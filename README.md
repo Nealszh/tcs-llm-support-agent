@@ -75,5 +75,7 @@ Once the server is running, open the following URL in your browser:
 http://127.0.0.1:8000/docs
 
 ## Running Tests
+```
 pytest -q
+```
 

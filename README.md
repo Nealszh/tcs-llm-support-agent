@@ -44,7 +44,7 @@ Request body:
 {
   "message": "My VPN is not working"
 }
-
+```
 ---
 
 ## How to Run (Local)

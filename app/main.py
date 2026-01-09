@@ -8,7 +8,14 @@ from agent.schema import UserInput, TriageResult
 load_dotenv()
 
 app = FastAPI(title="TCS Support Triage & Resolution Agent", version="1.0.0")
-graph = build_graph()
+
+_graph = None
+
+def get_graph():
+    global _graph
+    if _graph is None:
+        _graph = build_graph()
+    return _graph
 
 
 @app.get("/health")
@@ -20,5 +27,7 @@ def health():
 def triage(payload: UserInput):
     if not payload.message.strip():
         raise HTTPException(status_code=400, detail="message is empty")
+    graph = get_graph()
     out = graph.invoke({"user_message": payload.message})
     return out["result_json"]
+

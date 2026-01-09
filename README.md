@@ -44,3 +44,31 @@ Request body:
 {
   "message": "My VPN is not working"
 }
+---
+
+## How to Run (Local)
+
+This project can be run locally for development or evaluation purposes.
+
+### 1. Install dependencies
+
+```bash
+pip install -r requirements.txt
+
+### 2. Configure environment variables
+
+Create a .env file based on the provided example:
+cp .env.example .env
+
+### 3. Start the API server
+
+uvicorn app.main:app --reload
+
+### 4. Open API documentation
+
+Once the server is running, open the following URL in your browser:
+http://127.0.0.1:8000/docs
+
+## Running Tests
+pytest -q
+

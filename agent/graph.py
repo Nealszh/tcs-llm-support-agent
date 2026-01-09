@@ -90,14 +90,14 @@ def node_escalate(state: AgentState) -> AgentState:
 
 def build_graph():
     g = StateGraph(AgentState)
-    g.add_node("signals", node_signals)
+    g.add_node("detect_signals", node_signals)
     g.add_node("route", node_route)
     g.add_node("draft", node_draft)
     g.add_node("ask", node_ask)
     g.add_node("escalate", node_escalate)
 
-    g.set_entry_point("signals")
-    g.add_edge("signals", "route")
+    g.set_entry_point("detect_signals")
+    g.add_edge("detect_signals", "route")
 
     def _chooser(state: AgentState) -> str:
         action = (state.get("route") or {}).get("next_action", "ask")
@@ -115,3 +115,4 @@ def build_graph():
     g.add_edge("ask", END)
     g.add_edge("escalate", END)
     return g.compile()
+

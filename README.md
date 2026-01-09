@@ -60,11 +60,14 @@ pip install -r requirements.txt
 ### 2. Configure environment variables
 
 Create a .env file based on the provided example:
+```
 cp .env.example .env
+```
 
 ### 3. Start the API server
-
+```
 uvicorn app.main:app --reload
+```
 
 ### 4. Open API documentation
 
